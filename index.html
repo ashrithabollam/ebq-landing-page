@@ -1,158 +1,137 @@
-﻿<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Landing Page</title>
+  <title>Landing Page</title>
 
-	<link rel="stylesheet" href="styles.css">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-	<script type="text/javascript">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      const button = document.getElementById("contactButtons");
+      const img = document.getElementById("imgLogo");
+      const rainContainer = document.getElementById("rainContainer");
 
-	document.addEventListener("DOMContentLoaded", () => {
-  	const button = document.getElementById("contactButtons");
-	const img = document.getElementById("imgLogo");
-	const rainContainer = document.getElementById("rainContainer");
+      let rainInterval = null;
 
-	let rainInterval = null;
+      button.addEventListener("click", () => {
+        const pageHeight = document.documentElement.scrollHeight;
 
-	button.addEventListener("click", () => {
-		const pageHeight = document.documentElement.scrollHeight;
+        if (rainInterval) return;
 
-		if (rainInterval) return;
+        rainInterval = setInterval(() => {
+          const drop = img.cloneNode(true);
+          drop.style.display = "block";
+          drop.classList.add("raindrop");
 
-		rainInterval = setInterval(() => {
-		const drop = img.cloneNode(true);
-		drop.style.display = "block";
-		drop.classList.add("raindrop");
+          drop.style.left = Math.random() * window.innerWidth + "px";
+          const size = 20 + Math.random() * 60;
+          drop.style.width = size + "px";
+          drop.style.setProperty("--drift", (Math.random() * 200 - 100) + "px");
+          drop.style.setProperty("--fallDistance", pageHeight + "px");
+          drop.style.animationDuration = (2 + Math.random() * 4) + "s";
 
-		drop.style.left = Math.random() * window.innerWidth + "px";
-		const size = 20 + Math.random() * 60;
-		drop.style.width = size + "px";
-		drop.style.setProperty("--drift", (Math.random() * 200 - 100) + "px");
-		drop.style.setProperty("--fallDistance", pageHeight + "px");
-		drop.style.animationDuration = (2 + Math.random() * 4) + "s";
+          rainContainer.appendChild(drop);
+          drop.addEventListener("animationend", () => drop.remove());
+        }, 200);
 
-		rainContainer.appendChild(drop);
-		drop.addEventListener("animationend", () => drop.remove());
-		}, 200);
-
-		setTimeout(() => {
-		clearInterval(rainInterval);
-		rainInterval = null;
-		}, 4000);
-	});
-	});
-	</script>
-
-	
+        setTimeout(() => {
+          clearInterval(rainInterval);
+          rainInterval = null;
+        }, 4000);
+      });
+    });
+  </script>
 </head>
 
 <body>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="box box-unique-1">
+      <div class="upper-block-1">
+        <div class="sub-upper-block-1-a">
+          <img id="imgLogo" src="assets/logo-blue-160x160-1.png" alt="Logo">
+        </div>
+        <div class="sub-upper-block-1-b">
+          <div class="contact-us" id="contactButtons">
+            CONTACT US
+          </div>
+        </div>
+      </div>
 
-	<!--Page Content-->
+      <div class="lower-block-1">
+        <div class="sub-lower-block-1-a">
+          <div id="integrated">Integrated</div>
+          <div id="marketingServices">Marketing Services</div>
+          <div id="notes">
+            We turn your marketing plans into action by bulding on<br>
+            your ideas and executing initiatives alongside you and<br>
+            your team. Get a complete department that can pivot to<br>
+            different areas based on your needs
+          </div>
+        </div>
+      </div>
+    </div>
 
-	<div class="container">
-		<div class="box box-unique-1">
-			<div class="upper-block-1">
-				<div class="sub-upper-block-1-a">
-					<img id="imgLogo" src="assets/logo-blue-160x160-1.png" alt="Logo">
+    <div class="box box-unique-2">
+      <div class="left-block-2">
+        <div class="sub-left-upper-block-2-a">
+          <div class="block-2-title">
+            We’re experts with <b>modern marketing tools</b>, so you don’t have to be!
+          </div>
+          <div class="block-2-text">
+            With hands-on experience in B2B’s most innovative apps and tools, we take a data-driven approach
+            to continually improve prospect engagement. Whether we work directly out of your platform or
+            provide our insights manually, you always get full visibility into the process.
+          </div>
+        </div>
+      </div>
 
-				</div>
-				<div class="sub-upper-block-1-b">
+      <div class="right-block-2">
+        <div class="right-block-2-b">
+          <img id="marketingTools" src="assets/Marketing_Tools.svg" alt="Arrow Right">
+        </div>
+      </div>
+    </div>
 
-					<div class="contact-us" id="contactButtons">
-						CONTACT US
-					</div>
+    <div class="box box-unique-3">
+      <div class="left-block-3">
+        <div class="left-block-3-a">
+          <img id="marketingTools" src="assets/Complete-Department-Marketing.png" alt="Arrow Right">
+        </div>
+      </div>
 
-				</div>
+      <div class="right-block-3">
+        <div class="sub-right-upper-block-3-a">
+          <div class="block-3-title">
+            <b>The best way </b>to build a marketing team
+          </div>
+          <div class="block-3-text1">
+            With EBQ, you’re not just hiring a marketing specialist. You’re getting an entire marketing
+            department at a fraction of the cost and effort of hiring internally.
+          </div>
+          <div class="block-3-text2">
+            For each project, we provide: a Success Manager to drive high-level strategy, a Project Manager
+            to oversee day-to-day operations, and one or more Specialists working diligently to amplify your
+            brand.
+          </div>
+        </div>
+      </div>
+    </div>
 
-			</div>
-			<div class="lower-block-1">
-				<div class="sub-lower-block-1-a">
-					<div id="integrated">Integrated</div>
-					<div id="marketingServices">Marketing Services</div>
-					<div id="notes">We turn your marketing plans into action by bulding on </br>
-						your ideas and executing initiatives alongside you and </br>
-						your team. Get a complete department that can pivot to </br>
-						different areas based on your needs</div>
-				</div>
+    <div class="box box-unique-4">
+      <div class="block-4-title">
+        Looking to take your <b>marketing to the next level?</b>
+      </div>
+      <div class="block-4-text-contact-us" id="contactButtons">
+        CONTACT US
+      </div>
+    </div>
+  </div>
 
-			</div>
+  <div id="rainContainer"></div>
 
-		</div>
-
-		<div class="box box-unique-2">
-
-			<div class="left-block-2">
-				<div class="sub-left-upper-block-2-a">
-					<div class="block-2-title">
-						Weâ€™re experts with <b>modern marketing tools</b>, so you donâ€™t have to be!
-					</div>
-					<div class="block-2-text">
-						With hands-on experience in B2Bâ€™s most innovative apps and tools, we take a data-driven approach
-						to continually improve prospect engagement. Whether we work directly out of your platform or
-						provide our insights manually, you always get full visibility into the process.
-					</div>
-
-				</div>
-
-			</div>
-			<div class="right-block-2">
-
-				<div class="right-block-2-b">
-					<img id="marketingTools" src="assets/Marketing_Tools.svg" alt="Arrow Right">
-				</div>
-
-			</div>
-
-
-		</div>
-
-		<div class="box box-unique-3">
-
-			<div class="left-block-3">
-
-				<div class="left-block-3-a">
-					<img id="marketingTools" src="assets/Complete-Department-Marketing.png" alt="Arrow Right">
-				</div>
-			</div>
-			<div class="right-block-3">
-				<div class="sub-right-upper-block-3-a">
-					<div class="block-3-title">
-
-
-						<b>The best way </b>to build a marketing team
-					</div>
-					<div class="block-3-text1">
-						With EBQ, youâ€™re not just hiring a marketing specialist. Youâ€™re getting an entire marketing
-						department at a fraction of the cost and effort of hiring internally. </div>
-					<div class="block-3-text2">
-						For each project, we provide: a Success Manager to drive high-level strategy, a Project Manager
-						to oversee day-to-day operations, and one or more Specialists working diligently to amplify your
-						brand. </div>
-
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="box box-unique-4">
-			<div class="block-4-title">
-				Looking to take your <b>marketing to the next level?</b>
-			</div>
-			<div class="block-4-text-contact-us" id="contactButtons">
-				CONTACT US
-			</div>
-		</div>
-	</div>
-	<div id="rainContainer"></div>
-
-	<img id="imgLogo" src="assets/logo-blue-160x160-1.png" alt="Logo" style="display:none;">
-
-
-
+  <!-- hidden template image for rain effect -->
+  <img id="imgLogo" src="assets/logo-blue-160x160-1.png" alt="Logo" style="display:none;">
 </body>
-
 </html>
